@@ -7,7 +7,8 @@ import Home from './pages/Home';
 import Celebirity from './pages/Celebirity';
 import Tv from './pages/Tv';
 import NotFound from './pages/NotFound';
-import MovieDetail from './pages/MovieDetail';
+import ContentDetail from './pages/ContentDetail';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/movie' element={<Movie />} />
-            <Route path='/movie/:title' element={<MovieDetail />} />
+            <Route path='/movie/:title' element={<ContentDetail />} />
             <Route path='/tv' element={<Tv />} />
+            <Route path='/tv/:title' element={<ContentDetail />} />
             <Route path='/celebirity' element={<Celebirity />} />
+            <Route path='/login' element={<Login />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Body>

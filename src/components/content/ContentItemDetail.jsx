@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function MovieItemDetail({ display, title, overview }) {
+function ContentItemDetail({ display, title, overview }) {
   return (
     <ItemDetail display={display}>
       <ItemDetailTitle>{title}</ItemDetailTitle>
@@ -10,7 +10,7 @@ function MovieItemDetail({ display, title, overview }) {
   );
 }
 
-MovieItemDetail.propTypes = {
+ContentItemDetail.propTypes = {
   display: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired
@@ -44,4 +44,4 @@ const ItemDetailOverview = styled.div`
   cursor: default;
 `;
 
-export default MovieItemDetail;
+export default ContentItemDetail;

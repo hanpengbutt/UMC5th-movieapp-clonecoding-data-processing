@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import movies from '../services/movieDummy';
-import MovieItem from '../components/movie/MovieItem';
+import MovieItem from '../components/content/ContentItem';
 
 function Movie() {
   return (
@@ -13,6 +13,7 @@ function Movie() {
             poster={item.poster_path}
             voteAverage={item.vote_average}
             overview={item.overview}
+            contentType='movie'
           />
         );
       })}

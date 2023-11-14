@@ -2,12 +2,12 @@ import { useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import TMDB_IMAGE_BASE_URL from '../constants/imagePath';
 
-function MovieDetail() {
+function ContentDetail() {
   const { title } = useParams();
   const { state } = useLocation();
   return (
     <MovieDetailWrapper>
-      <Poster src={TMDB_IMAGE_BASE_URL(state.poster)} alt='영화 포스터 사진' />
+      <Poster src={TMDB_IMAGE_BASE_URL(state.poster)} alt='포스터 사진' />
       <Title>{title}</Title>
     </MovieDetailWrapper>
   );
@@ -26,4 +26,4 @@ const Title = styled.div`
   color: white;
 `;
 
-export default MovieDetail;
+export default ContentDetail;

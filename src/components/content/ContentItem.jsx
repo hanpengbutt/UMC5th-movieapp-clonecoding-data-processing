@@ -2,42 +2,43 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import MovieItemDetail from './MovieItemDetail';
+import ContentItemDetail from './ContentItemDetail';
 import TMDB_IMAGE_BASE_URL from '../../constants/imagePath';
 
-function MovieItem({ title, voteAverage, overview, poster }) {
+function ContentItem({ title, voteAverage, overview, poster, contentType }) {
   const [detail, setDetail] = useState(false);
   const navigate = useNavigate();
-  const handleClickMovieItem = () => {
-    navigate(`/movie/${title}`, {
+  const handleClickContentItem = () => {
+    navigate(`/${contentType}/${title}`, {
       state: { voteAverage, overview, poster }
     });
   };
 
   return (
-    <MovieItemWrapper
+    <ContentItemWrapper
       onMouseOver={() => setDetail(true)}
       onMouseOut={() => setDetail(false)}
-      onClick={handleClickMovieItem}
+      onClick={handleClickContentItem}
     >
-      <ItemPoster src={TMDB_IMAGE_BASE_URL(poster)} alt='영화 포스터 사진' />
+      <ItemPoster src={TMDB_IMAGE_BASE_URL(poster)} alt='포스터 사진' />
       <ItemInfo>
         <ItemTitle>{title}</ItemTitle>
         <div>{voteAverage}</div>
       </ItemInfo>
-      <MovieItemDetail title={title} overview={overview} display={detail} />
-    </MovieItemWrapper>
+      <ContentItemDetail title={title} overview={overview} display={detail} />
+    </ContentItemWrapper>
   );
 }
 
-MovieItem.propTypes = {
+ContentItem.propTypes = {
   voteAverage: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired
+  poster: PropTypes.string.isRequired,
+  contentType: PropTypes.string.isRequired
 };
 
-const MovieItemWrapper = styled.div`
+const ContentItemWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -68,4 +69,4 @@ const ItemTitle = styled.div`
   word-break: keep-all;
 `;
 
-export default MovieItem;
+export default ContentItem;
