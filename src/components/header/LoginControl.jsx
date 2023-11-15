@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { logOut } from '../../store/reducers';
 
 function LoginControl() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector(state => state.isLoggedIn);
+  const dispatch = useDispatch();
+
+  const navigation = useNavigate();
   const handleClick = () => {
-    setIsLoggedIn(prevState => !prevState);
+    if (!isLoggedIn) navigation('/login');
+    else dispatch(logOut());
   };
 
   return (
